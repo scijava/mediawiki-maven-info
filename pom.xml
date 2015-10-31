@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>8.5.0</version>
+		<relativePath />
+	</parent>
+
+	<artifactId>mediawiki-maven-info</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+
+	<name>MediaWiki Maven Info</name>
+	<description>Generate MediaWiki pages summarizing Maven components.</description>
+	<inceptionYear>2015</inceptionYear>
+	<licenses>
+		<license>
+			<name>GNU General Public License v3+</name>
+			<url>http://www.gnu.org/licenses/gpl.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>ctrueden</id>
+			<name>Curtis Rueden</name>
+			<email>ctrueden@wisc.edu</email>
+			<url>http://loci.wisc.edu/people/curtis-rueden</url>
+			<organization>UW-Madison LOCI</organization>
+			<organizationUrl>http://loci.wisc.edu/</organizationUrl>
+			<timezone>-6</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/scijava/mediawiki-maven-info</connection>
+		<developerConnection>scm:git:git@github.com:scijava/mediawiki-maven-info</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/scijava/mediawiki-maven-info</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/scijava/mediawiki-maven-info/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://jenkins.imagej.net/job/MediaWiki-Maven-Info/</url>
+	</ciManagement>
+
+	<properties>
+		<main-class>org.scijava.maven.wiki.Info</main-class>
+		<scijava.jvm.version>1.7</scijava.jvm.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>imagej.public</id>
+			<url>http://maven.imagej.net/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.scijava</groupId>
+			<artifactId>scijava-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.wikipedia</groupId>
+			<artifactId>wiki-java</artifactId>
+			<version>0.31</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<configuration>
+					<licenseName>gpl_v3</licenseName>
+					<organizationName>Board of Regents of the University of
+Wisconsin-Madison.</organizationName>
+					<projectName>Maven component MediaWiki page generator.</projectName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>info</id>
+			<dependencies>
+				<dependency>
+					<groupId>${info.groupId}</groupId>
+					<artifactId>${info.artifactId}</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+</project>
