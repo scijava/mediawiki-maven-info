@@ -56,6 +56,7 @@
 	<properties>
 		<main-class>org.scijava.maven.wiki.Info</main-class>
 		<scijava.jvm.version>1.7</scijava.jvm.version>
+		<scijava-common.version>2.49.0</scijava-common.version>
 	</properties>
 
 	<repositories>
@@ -74,6 +75,12 @@
 			<groupId>org.wikipedia</groupId>
 			<artifactId>wiki-java</artifactId>
 			<version>0.31</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -99,8 +106,40 @@ Wisconsin-Madison.</organizationName>
 				<dependency>
 					<groupId>${info.groupId}</groupId>
 					<artifactId>${info.artifactId}</artifactId>
+					<version>${info.version}</version>
 				</dependency>
 			</dependencies>
+			<properties>
+				<skipTests>true</skipTests>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+						<configuration>
+							<executable>java</executable>
+							<arguments>
+								<argument>-classpath</argument>
+								<classpath />
+								<argument>-Dinfo.groupId=${info.groupId}</argument>
+								<argument>-Dinfo.artifactId=${info.artifactId}</argument>
+								<argument>-Dinfo.version=${info.version}</argument>
+								<argument>-Dinfo.url=${info.url}</argument>
+								<argument>${main-class}</argument>
+							</arguments>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 </project>
