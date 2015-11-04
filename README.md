@@ -19,5 +19,5 @@ Run it from the CLI on a given component via:
         -Dinfo.version=2.0.0-rc-42 \
         -Dinfo.url=http://wiki.imagej.net/
 
-The {@code info.url} is optional; without it, the analyzer performs a dry run,
+The `info.url` is optional; without it, the analyzer performs a dry run,
 dumping the resultant tables to stdout.
