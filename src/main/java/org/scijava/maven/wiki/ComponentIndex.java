@@ -567,7 +567,7 @@ public class ComponentIndex {
 
 		public void print(final Object... obj) {
 			for (final Object o : obj)
-				sb.append(o);
+				sb.append(o == null ? "" : o);
 		}
 
 		public void println(final Object... o) {
