@@ -1,6 +1,6 @@
 # MediaWiki Maven Info #
 
-A spiffy software component table analyzer.
+A spiffy software component metadata analyzer and table generator.
 
 It generates MediaWiki-formatted metadata tables, and uploads them to a
 MediaWiki instance.
