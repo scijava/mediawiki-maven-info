@@ -86,7 +86,7 @@ public class ComponentIndexTest {
 		final String[] gentyref =
 			{
 				"{{Component", //
-				"| app = SciJava Common", //
+				"| project = SciJava Common", //
 				"| name = GenTyRef", //
 				"| url = http://code.google.com/p/gentyref/", //
 				"| release = {{Maven | g=com.googlecode.gentyref | a=gentyref | v=1.1.0 | label=1.1.0}}", //
@@ -100,7 +100,7 @@ public class ComponentIndexTest {
 		final String[] eventbus =
 			{
 				"{{Component", //
-				"| app = SciJava Common", //
+				"| project = SciJava Common", //
 				"| name = EventBus", //
 				"| url = http://www.eventbus.org", //
 				"| source = [https://eventbus.dev.java.net/source/browse/eventbus/ https://eventbus.dev.java.net/source/browse/eventbus/]", //
