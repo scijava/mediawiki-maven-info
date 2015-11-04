@@ -63,7 +63,7 @@ public class ComponentIndexTest {
 				"|-", //
 				"| [http://code.google.com/p/gentyref/ GenTyRef]", //
 				"| Generics type reflection library for Java", //
-				"| null", //
+				"| ", //
 				"| {{Maven | g=com.googlecode.gentyref | a=gentyref | label=gentyref}}", //
 				"| ", //
 				"| Wouter Coekaerts", //
