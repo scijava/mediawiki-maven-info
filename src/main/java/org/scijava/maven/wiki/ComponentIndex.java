@@ -187,7 +187,7 @@ public class ComponentIndex {
 		final String v = pom.getVersion();
 
 		// team members
-		final Items founders = roleLinks(pom, "founder");
+		final Items founders = founderLinks(pom);
 		final Items leads = roleLinks(pom, "lead");
 		final Items developers = roleLinks(pom, "developer");
 		final Items debuggers = roleLinks(pom, "debugger");
@@ -350,6 +350,23 @@ public class ComponentIndex {
 			sb.append(personLink(id, name));
 		}
 		return sb.toString();
+	}
+
+	private Items founderLinks(final POM pom) {
+		final Items founders = roleLinks(pom, "founder");
+		// NB: Also add founders currently classified as contributors.
+		for (final Element contributor : contributors(pom)) {
+			final String id = idProperty(contributor);
+			final String name = XML.cdata(contributor, "name");
+			final ArrayList<Element> roles = XML.elements(contributor, "role");
+			for (final Element role : roles) {
+				if ("founder".equalsIgnoreCase(role(role))) {
+					founders.add(personLink(id, name));
+					break;
+				}
+			}
+		}
+		return founders;
 	}
 
 	private Items roleLinks(final POM pom, final String roleName) {
