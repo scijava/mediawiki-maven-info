@@ -42,6 +42,7 @@ import org.scijava.util.Manifest;
 import org.scijava.util.POM;
 import org.scijava.util.XML;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
@@ -433,9 +434,10 @@ public class ComponentIndex {
 	private Items contributorLinks(final POM pom) {
 		final Items items = new Items();
 		for (final Element contributor : contributors(pom)) {
+			final String id = idProperty(contributor);
 			final String name = XML.cdata(contributor, "name");
 			final String url = XML.cdata(contributor, "url");
-			items.add(link(name, url));
+			items.add(id == null ? link(name, url) : personLink(id, name));
 		}
 		return items;
 	}
@@ -458,6 +460,12 @@ public class ComponentIndex {
 	}
 
 	// -- Helper methods - XML --
+
+	private String idProperty(final Element el) {
+		final NodeList propNodes = el.getElementsByTagName("properties");
+		if (propNodes == null || propNodes.getLength() == 0) return null;
+		return XML.cdata((Element) propNodes.item(0), "id");
+	}
 
 	private String property(final POM pom, final String key) {
 		return pom.cdata("//project/properties/" + key);
