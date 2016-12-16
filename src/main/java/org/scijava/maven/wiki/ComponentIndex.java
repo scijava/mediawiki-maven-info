@@ -318,10 +318,7 @@ public class ComponentIndex {
 			if (date == null) return null;
 			return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").parse(date);
 		}
-		catch (final IOException exc) {
-			return null;
-		}
-		catch (final ParseException exc) {
+		catch (final IOException | ParseException exc) {
 			return null;
 		}
 	}
@@ -523,13 +520,9 @@ public class ComponentIndex {
 		try {
 			return elements.isEmpty() ? elements(parent(pom), expr) : elements;
 		}
-		catch (final ParserConfigurationException exc) {
-			throw new RuntimeException(exc);
-		}
-		catch (final SAXException exc) {
-			throw new RuntimeException(exc);
-		}
-		catch (final IOException exc) {
+		catch (final ParserConfigurationException | SAXException
+				| IOException exc)
+		{
 			throw new RuntimeException(exc);
 		}
 	}
