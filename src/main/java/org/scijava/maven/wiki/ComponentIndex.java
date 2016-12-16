@@ -92,7 +92,7 @@ public class ComponentIndex {
 	private final String baseName;
 
 	/** Collection of dependencies for the base project. */
-	private final HashMap<String, String> depMap = new HashMap<>();
+	private final HashMap<String, String> deps = new HashMap<>();
 
 	/** Cache of retrieved component POMs. */
 	private final HashMap<String, POM> pomCache = new HashMap<>();
@@ -114,12 +114,12 @@ public class ComponentIndex {
 		baseName = project.getProjectName();
 
 		// build list of dependencies for the project
-		final ArrayList<Element> deps = dependencies(project);
-		for (final Element dep : deps) {
+		final ArrayList<Element> depList = dependencies(project);
+		for (final Element dep : depList) {
 			final String dg = XML.cdata(dep, "groupId");
 			final String da = XML.cdata(dep, "artifactId");
 			final String dv = XML.cdata(dep, "version");
-			depMap.put(dg + ":" + da, dv);
+			deps.put(dg + ":" + da, dv);
 		}
 
 		// filter the candidate components
@@ -243,7 +243,7 @@ public class ComponentIndex {
 	// -- Internal methods --
 
 	private boolean isRelevant(final POM pom) {
-		return depMap.containsKey(pom.getGroupId() + ":" + pom.getArtifactId());
+		return deps.containsKey(pom.getGroupId() + ":" + pom.getArtifactId());
 	}
 
 	// -- Helper methods - link building --
