@@ -91,9 +91,6 @@ public class ComponentIndex {
 	/** POM of the base project. */
 	private final POM project;
 
-	/** Name of the base project whose components are being indexed. */
-	private final String baseName;
-
 	/** Collection of dependencies for the base project. */
 	private final HashMap<String, String> deps = new HashMap<>();
 
@@ -102,6 +99,9 @@ public class ComponentIndex {
 
 	/** List of POMs relevant to the base project. */
 	private final List<POM> poms;
+
+	/** Name of the base project whose components are being indexed. */
+	private String baseName;
 
 	public ComponentIndex(final String g, final String a, final String v)
 		throws IOException, ParserConfigurationException, SAXException
@@ -140,6 +140,10 @@ public class ComponentIndex {
 
 	public String getBaseName() {
 		return baseName;
+	}
+
+	public void setBaseName(final String baseName) {
+		this.baseName = baseName;
 	}
 
 	public List<POM> getPOMs() {

@@ -68,6 +68,8 @@ public class Info {
 			final String v = arg(prefix + "version", first);
 			if (g == null) break; // no more projects to process
 			final ComponentIndex index = new ComponentIndex(g, a, v);
+			final String name = arg(prefix + "name", false);
+			if (name != null) index.setBaseName(name);
 			indices.add(index);
 		}
 
