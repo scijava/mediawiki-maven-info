@@ -547,19 +547,17 @@ public class ComponentIndex {
 		final String gav = g + ":" + a + ":" + v;
 		POM pom = pomCache.get(gav);
 		if (pom == null) {
-			final File file =
-				new File(System.getProperty("user.home") + "/.m2/repository/" +
-					g.replace('.', '/') + "/" + a + "/" + v + "/" + a + "-" + v + ".pom");
+			final File file = new File(System.getProperty("user.home") +
+				"/.m2/repository/" + g.replace('.', '/') + //
+				"/" + a + "/" + v + "/" + a + "-" + v + ".pom");
 			if (file.exists()) {
 				// read from Maven local repository cache
 				pom = new POM(file);
 			}
 			else {
 				// read from remote ImageJ Maven repository
-				final String url =
-					"http://maven.imagej.net/content/groups/public/" +
-						g.replace('.', '/') + "/" + a + "/" + v + "/" + a + "-" + v +
-						".pom";
+				final String url = "http://maven.imagej.net/content/groups/public/" + //
+					g.replace('.', '/') + "/" + a + "/" + v + "/" + a + "-" + v + ".pom";
 				pom = new POM(new URL(url));
 			}
 			pomCache.put(gav, pom);
