@@ -123,7 +123,20 @@ public class WikiUpdater {
 		public String user, pass;
 
 		public Credentials(final URL url) {
-			// parse from URL's userInfo
+			parseUserInfo(url);
+			if (user != null && pass != null) return;
+
+			parseNetrcCredentials(url);
+		}
+
+		public boolean isValid() {
+			return user != null && pass != null;
+		}
+
+		// -- Helper methods --
+
+		/** Parses username and password from URL's userInfo. */
+		private void parseUserInfo(final URL url) {
 			final String userInfo = url.getUserInfo();
 			if (userInfo != null) {
 				final int colon = userInfo.indexOf(":");
@@ -133,45 +146,39 @@ public class WikiUpdater {
 					pass = userInfo.substring(colon + 1);
 				}
 			}
+		}
 
-			if (user == null || pass == null) {
-				// parse from ~/.netrc
-				final File netrc = new File(System.getProperty("user.home"), ".netrc");
-				boolean relevantMachine = false;
-				if (netrc.exists()) {
-					try (final BufferedReader in = //
-						new BufferedReader(new FileReader(netrc)))
-					{
-						while (user == null || pass == null) {
-							final String line = in.readLine();
-							if (line == null) break; // EOF
-							final String cleanLine = line.trim();
-							final int space = cleanLine.indexOf(" ");
-							if (space < 0) continue; // non-key-value-pair
+		/** Parses username and password from {@code ~/.netrc}. */
+		private void parseNetrcCredentials(final URL url) {
+			final File netrc = new File(System.getProperty("user.home"), ".netrc");
+			boolean relevantMachine = false;
+			if (!netrc.exists()) return;
+			try (final BufferedReader in = //
+					new BufferedReader(new FileReader(netrc)))
+			{
+				while (user == null || pass == null) {
+					final String line = in.readLine();
+					if (line == null) break; // EOF
+					final String cleanLine = line.trim();
+					final int space = cleanLine.indexOf(" ");
+					if (space < 0) continue; // non-key-value-pair
 
-							final String key = cleanLine.substring(0, space);
-							final String value = cleanLine.substring(space + 1);
+					final String key = cleanLine.substring(0, space);
+					final String value = cleanLine.substring(space + 1);
 
-							if (key.equals("machine")) {
-								relevantMachine = value.equals(url.getHost());
-							}
-							if (!relevantMachine) continue;
-
-							if (key.equals("login")) user = value;
-							if (key.equals("password")) pass = value;
-						}
+					if (key.equals("machine")) {
+						relevantMachine = value.equals(url.getHost());
 					}
-					catch (final IOException exc) {
-						exc.printStackTrace();
-					}
+					if (!relevantMachine) continue;
+
+					if (key.equals("login")) user = value;
+					if (key.equals("password")) pass = value;
 				}
 			}
+			catch (final IOException exc) {
+				exc.printStackTrace();
+			}
 		}
-
-		public boolean isValid() {
-			return user != null && pass != null;
-		}
-
 	}
 
 }
