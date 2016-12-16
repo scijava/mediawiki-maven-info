@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.scijava</groupId>
 		<artifactId>pom-scijava</artifactId>
-		<version>9.0.0</version>
+		<version>12.0.0</version>
 		<relativePath />
 	</parent>
 
@@ -17,7 +17,12 @@
 
 	<name>MediaWiki Maven Info</name>
 	<description>Generate MediaWiki pages summarizing Maven components.</description>
+	<url>http://imagej.net/MediaWiki_Maven_Info</url>
 	<inceptionYear>2015</inceptionYear>
+	<organization>
+		<name>SciJava</name>
+		<url>http://www.scijava.org/</url>
+	</organization>
 	<licenses>
 		<license>
 			<name>GNU General Public License v3+</name>
@@ -50,6 +55,16 @@
 		<contributor><name>None</name></contributor>
 	</contributors>
 
+	<mailingLists>
+		<mailingList>
+			<name>SciJava</name>
+			<subscribe>https://groups.google.com/group/scijava</subscribe>
+			<unsubscribe>https://groups.google.com/group/scijava</unsubscribe>
+			<post>scijava@googlegroups.com</post>
+			<archive>https://groups.google.com/group/scijava</archive>
+		</mailingList>
+	</mailingLists>
+
 	<scm>
 		<connection>scm:git:git://github.com/scijava/mediawiki-maven-info</connection>
 		<developerConnection>scm:git:git@github.com:scijava/mediawiki-maven-info</developerConnection>
@@ -66,9 +81,12 @@
 	</ciManagement>
 
 	<properties>
+		<package-name>org.scijava.maven.wiki</package-name>
 		<main-class>org.scijava.maven.wiki.Info</main-class>
-		<scijava.jvm.version>1.7</scijava.jvm.version>
-		<scijava-common.version>2.49.0</scijava-common.version>
+		<license.licenseName>gpl_v3</license.licenseName>
+		<license.copyrightOwners>Board of Regents of the University of
+Wisconsin-Madison.</license.copyrightOwners>
+		<license.projectName>Maven component MediaWiki page generator.</license.projectName>
 	</properties>
 
 	<repositories>
@@ -95,21 +113,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<configuration>
-					<licenseName>gpl_v3</licenseName>
-					<organizationName>Board of Regents of the University of
-Wisconsin-Madison.</organizationName>
-					<projectName>Maven component MediaWiki page generator.</projectName>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 
 	<profiles>
 		<profile>
