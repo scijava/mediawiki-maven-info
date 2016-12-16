@@ -2,7 +2,7 @@
  * #%L
  * Maven component MediaWiki page generator.
  * %%
- * Copyright (C) 2015 Board of Regents of the University of
+ * Copyright (C) 2015 - 2016 Board of Regents of the University of
  * Wisconsin-Madison.
  * %%
  * This program is free software: you can redistribute it and/or modify
