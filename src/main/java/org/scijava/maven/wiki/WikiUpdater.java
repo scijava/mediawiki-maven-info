@@ -78,11 +78,18 @@ public class WikiUpdater {
 	// -- WikiUpdater methods --
 
 	/** Updates the wiki with the information from the associated Maven GAV. */
-	public void update(final ComponentIndex index) throws LoginException,
-		IOException
+	public void update(final ComponentIndex index, final boolean includeProject)
+		throws LoginException, IOException
 	{
+		final POM project = index.getProject();
+
 		final String masterTable = index.generateMasterTable();
-		upload("ComponentTable", index.getProject(), masterTable);
+		upload("ComponentTable", project, masterTable);
+
+		if (includeProject) {
+			final String componentTable = index.generateComponentTable(project);
+			upload("ComponentStats", project, componentTable);
+		}
 
 		for (final POM pom : index.getPOMs()) {
 			final String componentTable = index.generateComponentTable(pom);
