@@ -61,9 +61,10 @@ public class Info {
 		final String g = arg("info.groupId", true);
 		final String a = arg("info.artifactId", true);
 		final String v = arg("info.version", true);
+		final ComponentIndex index = new ComponentIndex(g, a, v);
 
-		final WikiUpdater wikiUpdater = new WikiUpdater(g, a, v, url);
-		wikiUpdater.update();
+		final WikiUpdater wikiUpdater = new WikiUpdater(url);
+		wikiUpdater.update(index);
 	}
 
 	// -- Helper methods --
