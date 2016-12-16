@@ -139,9 +139,9 @@ public class WikiUpdater {
 				final File netrc = new File(System.getProperty("user.home"), ".netrc");
 				boolean relevantMachine = false;
 				if (netrc.exists()) {
-					BufferedReader in = null;
-					try {
-						in = new BufferedReader(new FileReader(netrc));
+					try (final BufferedReader in = //
+						new BufferedReader(new FileReader(netrc)))
+					{
 						while (user == null || pass == null) {
 							final String line = in.readLine();
 							if (line == null) break; // EOF
@@ -163,16 +163,6 @@ public class WikiUpdater {
 					}
 					catch (final IOException exc) {
 						exc.printStackTrace();
-					}
-					finally {
-						if (in != null) {
-							try {
-								in.close();
-							}
-							catch (final IOException exc) {
-								exc.printStackTrace();
-							}
-						}
 					}
 				}
 			}
