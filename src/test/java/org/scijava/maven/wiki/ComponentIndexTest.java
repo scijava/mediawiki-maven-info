@@ -58,8 +58,8 @@ public class ComponentIndexTest {
 				"| '''Description'''", //
 				"| '''Repository'''", //
 				"| '''Artifact'''", //
-				"| '''License'''", //
-				"| '''Team'''", //
+				"| '''[[License]]'''", //
+				"| '''[[Team]]'''", //
 				"|-", //
 				"| [http://code.google.com/p/gentyref/ GenTyRef]", //
 				"| Generics type reflection library for Java", //

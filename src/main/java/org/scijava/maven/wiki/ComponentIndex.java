@@ -150,8 +150,8 @@ public class ComponentIndex {
 		s.println("| '''Description'''");
 		s.println("| '''Repository'''");
 		s.println("| '''Artifact'''");
-		s.println("| '''License'''");
-		s.println("| '''Team'''");
+		s.println("| '''[[License]]'''");
+		s.println("| '''[[Team]]'''");
 		for (final POM pom : poms) {
 			final String g = pom.getGroupId();
 			final String a = pom.getArtifactId();
