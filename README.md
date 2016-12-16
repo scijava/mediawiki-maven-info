@@ -17,7 +17,7 @@ Run it from the CLI on a given component via:
         -Dinfo.groupId=net.imagej \
         -Dinfo.artifactId=imagej \
         -Dinfo.version=2.0.0-rc-42 \
-        -Dinfo.url=http://wiki.imagej.net/
+        -Dinfo.url=http://imagej.net/
 
 The `info.url` is optional; without it, the analyzer performs a dry run,
 dumping the resultant tables to stdout.
