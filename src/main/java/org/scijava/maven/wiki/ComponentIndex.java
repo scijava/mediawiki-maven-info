@@ -56,7 +56,7 @@ public class ComponentIndex {
 	private static final HashMap<String, String> KNOWN_LICENSES = knownLicenses();
 
 	private static HashMap<String, String> knownLicenses() {
-		final HashMap<String, String> map = new HashMap<String, String>();
+		final HashMap<String, String> map = new HashMap<>();
 
 		map.put("Apache 2", "Apache");
 		map.put("Apache License 2", "Apache");
@@ -92,10 +92,10 @@ public class ComponentIndex {
 	private final String baseName;
 
 	/** Collection of dependencies for the base project. */
-	private final HashMap<String, String> depMap = new HashMap<String, String>();
+	private final HashMap<String, String> depMap = new HashMap<>();
 
 	/** Cache of retrieved component POMs. */
-	private final HashMap<String, POM> pomCache = new HashMap<String, POM>();
+	private final HashMap<String, POM> pomCache = new HashMap<>();
 
 	/** List of POMs relevant to the base project. */
 	private final List<POM> poms;
@@ -123,7 +123,7 @@ public class ComponentIndex {
 		}
 
 		// filter the candidate components
-		poms = new ArrayList<POM>();
+		poms = new ArrayList<>();
 		for (final POM pom : candidates) {
 			if (isRelevant(pom)) poms.add(pom);
 		}
@@ -518,7 +518,7 @@ public class ComponentIndex {
 	}
 
 	private ArrayList<Element> elements(final POM pom, final String expr) {
-		if (pom == null) return new ArrayList<Element>();
+		if (pom == null) return new ArrayList<>();
 		final ArrayList<Element> elements = pom.elements(expr);
 		try {
 			return elements.isEmpty() ? elements(parent(pom), expr) : elements;
