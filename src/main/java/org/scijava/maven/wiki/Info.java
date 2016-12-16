@@ -24,6 +24,7 @@
 package org.scijava.maven.wiki;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * A spiffy software component table analyzer.
@@ -58,13 +59,22 @@ public class Info {
 		final String urlPath = arg("info.url", false);
 		final URL url = urlPath == null ? null : new URL(urlPath);
 
-		final String g = arg("info.groupId", true);
-		final String a = arg("info.artifactId", true);
-		final String v = arg("info.version", true);
-		final ComponentIndex index = new ComponentIndex(g, a, v);
+		final ArrayList<ComponentIndex> indices = new ArrayList<>();
+		for (int p=1; p<=9; p++) {
+			final boolean first = p == 1;
+			final String prefix = first ? "info." : "info.project" + p + ".";
+			final String g = arg(prefix + "groupId", first);
+			final String a = arg(prefix + "artifactId", first);
+			final String v = arg(prefix + "version", first);
+			if (g == null) break; // no more projects to process
+			final ComponentIndex index = new ComponentIndex(g, a, v);
+			indices.add(index);
+		}
 
 		final WikiUpdater wikiUpdater = new WikiUpdater(url);
-		wikiUpdater.update(index);
+		for (final ComponentIndex index : indices) {
+			wikiUpdater.update(index);
+		}
 	}
 
 	// -- Helper methods --
