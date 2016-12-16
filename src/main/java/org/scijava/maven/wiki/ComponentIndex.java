@@ -88,6 +88,9 @@ public class ComponentIndex {
 		return map;
 	}
 
+	/** POM of the base project. */
+	private final POM project;
+
 	/** Name of the base project whose components are being indexed. */
 	private final String baseName;
 
@@ -110,7 +113,7 @@ public class ComponentIndex {
 		final Collection<POM> candidates) throws IOException,
 		ParserConfigurationException, SAXException
 	{
-		final POM project = fetchPOM(g, a, v);
+		project = fetchPOM(g, a, v);
 		baseName = project.getProjectName();
 
 		// build list of dependencies for the project
@@ -130,6 +133,10 @@ public class ComponentIndex {
 	}
 
 	// -- ComponentIndex methods --
+
+	public POM getProject() {
+		return project;
+	}
 
 	public String getBaseName() {
 		return baseName;
