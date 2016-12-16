@@ -55,11 +55,12 @@ public class Info {
 	// -- Main method --
 
 	public static void main(final String[] args) throws Exception {
+		final String urlPath = arg("info.url", false);
+		final URL url = urlPath == null ? null : new URL(urlPath);
+
 		final String g = arg("info.groupId", true);
 		final String a = arg("info.artifactId", true);
 		final String v = arg("info.version", true);
-		final String urlPath = arg("info.url", false);
-		final URL url = urlPath == null ? null : new URL(urlPath);
 
 		final WikiUpdater wikiUpdater = new WikiUpdater(g, a, v, url);
 		wikiUpdater.update();
