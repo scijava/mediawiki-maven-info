@@ -554,7 +554,9 @@ public class ComponentIndex {
 	private POM fetchPOM(final String g, final String a, final String v)
 		throws ParserConfigurationException, SAXException, IOException
 	{
-		if (g == null || a == null || v == null) return null;
+		if (g == null) throw new NullPointerException("Null groupId");
+		if (a == null) throw new NullPointerException("Null artifactId");
+		if (v == null) throw new NullPointerException("Null version");
 		final String gav = g + ":" + a + ":" + v;
 		POM pom = pomCache.get(gav);
 		if (pom == null) {
