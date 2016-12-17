@@ -265,6 +265,7 @@ Wisconsin-Madison.</license.copyrightOwners>
 							<arguments>
 								<argument>-classpath</argument>
 								<classpath />
+								<argument>-Dinfo.url=${info.url}</argument>
 								<argument>-Dinfo.groupId=${info.groupId}</argument>
 								<argument>-Dinfo.artifactId=${info.artifactId}</argument>
 								<argument>-Dinfo.version=${info.version}</argument>
@@ -310,7 +311,6 @@ Wisconsin-Madison.</license.copyrightOwners>
 								<argument>-Dinfo.project9.version=${info.project9.version}</argument>
 								<argument>-Dinfo.project9.name=${info.project9.name}</argument>
 								<argument>-Dinfo.project9.includeBase=${info.project9.includeBase}</argument>
-								<argument>-Dinfo.url=${info.url}</argument>
 								<argument>${main-class}</argument>
 							</arguments>
 						</configuration>

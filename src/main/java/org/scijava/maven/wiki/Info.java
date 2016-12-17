@@ -38,10 +38,10 @@ import java.util.HashSet;
  * </p>
  * <code><pre>
  * mvn -Pexec,info \
+ *     -Dinfo.url=http://imagej.net/ \
  *     -Dinfo.groupId=net.imagej \
  *     -Dinfo.artifactId=imagej \
- *     -Dinfo.version=2.0.0-rc-42 \
- *     -Dinfo.url=http://imagej.net/
+ *     -Dinfo.version=2.0.0-rc-42
  * </pre></code>
  * <p>
  * The {@code info.url} is optional; without it, the analyzer performs a dry
