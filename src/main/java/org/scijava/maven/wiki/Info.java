@@ -37,8 +37,7 @@ import java.util.HashSet;
  * Run it from the CLI on a given component via:
  * </p>
  * <code><pre>
- * mvn -Pexec,info \
- *     -Dinfo.url=http://imagej.net/ \
+ * mvn -Dinfo.url=http://imagej.net/ \
  *     -Dinfo.groupId=net.imagej \
  *     -Dinfo.artifactId=imagej \
  *     -Dinfo.version=2.0.0-rc-42
