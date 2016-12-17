@@ -130,6 +130,7 @@ Wisconsin-Madison.</license.copyrightOwners>
 				</dependency>
 			</dependencies>
 			<properties>
+				<enforcer.skip>true</enforcer.skip>
 				<skipTests>true</skipTests>
 			</properties>
 			<build>
