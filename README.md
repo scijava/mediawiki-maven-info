@@ -13,10 +13,10 @@ online in a human-friendly form.
 
 Run it from the CLI on a given component via:
 
-    mvn -Dinfo.url=http://imagej.net/ \
-        -Dinfo.groupId=net.imagej \
-        -Dinfo.artifactId=imagej \
-        -Dinfo.version=2.0.0-rc-42
+    mvn -Dmwmi.url=http://imagej.net/ \
+        -Dmwmi.groupId=net.imagej \
+        -Dmwmi.artifactId=imagej \
+        -Dmwmi.version=2.0.0-rc-42
 
-The `info.url` is optional; without it, the analyzer performs a dry run,
+The `mwmi.url` is optional; without it, the analyzer performs a dry run,
 dumping the resultant tables to stdout.

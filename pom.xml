@@ -121,14 +121,14 @@ Wisconsin-Madison.</license.copyrightOwners>
 			<id>project1</id>
 			<activation>
 				<property>
-					<name>info.groupId</name>
+					<name>mwmi.groupId</name>
 				</property>
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.groupId}</groupId>
-					<artifactId>${info.artifactId}</artifactId>
-					<version>${info.version}</version>
+					<groupId>${mwmi.groupId}</groupId>
+					<artifactId>${mwmi.artifactId}</artifactId>
+					<version>${mwmi.version}</version>
 				</dependency>
 			</dependencies>
 			<properties>
@@ -145,52 +145,52 @@ Wisconsin-Madison.</license.copyrightOwners>
 							<arguments>
 								<argument>-classpath</argument>
 								<classpath />
-								<argument>-Dinfo.url=${info.url}</argument>
-								<argument>-Dinfo.groupId=${info.groupId}</argument>
-								<argument>-Dinfo.artifactId=${info.artifactId}</argument>
-								<argument>-Dinfo.version=${info.version}</argument>
-								<argument>-Dinfo.name=${info.name}</argument>
-								<argument>-Dinfo.includeBase=${info.includeBase}</argument>
-								<argument>-Dinfo.project2.groupId=${info.project2.groupId}</argument>
-								<argument>-Dinfo.project2.artifactId=${info.project2.artifactId}</argument>
-								<argument>-Dinfo.project2.version=${info.project2.version}</argument>
-								<argument>-Dinfo.project2.name=${info.project2.name}</argument>
-								<argument>-Dinfo.project2.includeBase=${info.project2.includeBase}</argument>
-								<argument>-Dinfo.project3.groupId=${info.project3.groupId}</argument>
-								<argument>-Dinfo.project3.artifactId=${info.project3.artifactId}</argument>
-								<argument>-Dinfo.project3.version=${info.project3.version}</argument>
-								<argument>-Dinfo.project3.name=${info.project3.name}</argument>
-								<argument>-Dinfo.project3.includeBase=${info.project3.includeBase}</argument>
-								<argument>-Dinfo.project4.groupId=${info.project4.groupId}</argument>
-								<argument>-Dinfo.project4.artifactId=${info.project4.artifactId}</argument>
-								<argument>-Dinfo.project4.version=${info.project4.version}</argument>
-								<argument>-Dinfo.project4.name=${info.project4.name}</argument>
-								<argument>-Dinfo.project4.includeBase=${info.project4.includeBase}</argument>
-								<argument>-Dinfo.project5.groupId=${info.project5.groupId}</argument>
-								<argument>-Dinfo.project5.artifactId=${info.project5.artifactId}</argument>
-								<argument>-Dinfo.project5.version=${info.project5.version}</argument>
-								<argument>-Dinfo.project5.name=${info.project5.name}</argument>
-								<argument>-Dinfo.project5.includeBase=${info.project5.includeBase}</argument>
-								<argument>-Dinfo.project6.groupId=${info.project6.groupId}</argument>
-								<argument>-Dinfo.project6.artifactId=${info.project6.artifactId}</argument>
-								<argument>-Dinfo.project6.version=${info.project6.version}</argument>
-								<argument>-Dinfo.project6.name=${info.project6.name}</argument>
-								<argument>-Dinfo.project6.includeBase=${info.project6.includeBase}</argument>
-								<argument>-Dinfo.project7.groupId=${info.project7.groupId}</argument>
-								<argument>-Dinfo.project7.artifactId=${info.project7.artifactId}</argument>
-								<argument>-Dinfo.project7.version=${info.project7.version}</argument>
-								<argument>-Dinfo.project7.name=${info.project7.name}</argument>
-								<argument>-Dinfo.project7.includeBase=${info.project7.includeBase}</argument>
-								<argument>-Dinfo.project8.groupId=${info.project8.groupId}</argument>
-								<argument>-Dinfo.project8.artifactId=${info.project8.artifactId}</argument>
-								<argument>-Dinfo.project8.version=${info.project8.version}</argument>
-								<argument>-Dinfo.project8.name=${info.project8.name}</argument>
-								<argument>-Dinfo.project8.includeBase=${info.project8.includeBase}</argument>
-								<argument>-Dinfo.project9.groupId=${info.project9.groupId}</argument>
-								<argument>-Dinfo.project9.artifactId=${info.project9.artifactId}</argument>
-								<argument>-Dinfo.project9.version=${info.project9.version}</argument>
-								<argument>-Dinfo.project9.name=${info.project9.name}</argument>
-								<argument>-Dinfo.project9.includeBase=${info.project9.includeBase}</argument>
+								<argument>-Dmwmi.url=${mwmi.url}</argument>
+								<argument>-Dmwmi.groupId=${mwmi.groupId}</argument>
+								<argument>-Dmwmi.artifactId=${mwmi.artifactId}</argument>
+								<argument>-Dmwmi.version=${mwmi.version}</argument>
+								<argument>-Dmwmi.name=${mwmi.name}</argument>
+								<argument>-Dmwmi.includeBase=${mwmi.includeBase}</argument>
+								<argument>-Dmwmi.groupId2=${mwmi.groupId2}</argument>
+								<argument>-Dmwmi.artifactId2=${mwmi.artifactId2}</argument>
+								<argument>-Dmwmi.version2=${mwmi.version2}</argument>
+								<argument>-Dmwmi.name2=${mwmi.name2}</argument>
+								<argument>-Dmwmi.includeBase2=${mwmi.includeBase2}</argument>
+								<argument>-Dmwmi.groupId3=${mwmi.groupId3}</argument>
+								<argument>-Dmwmi.artifactId3=${mwmi.artifactId3}</argument>
+								<argument>-Dmwmi.version3=${mwmi.version3}</argument>
+								<argument>-Dmwmi.name3=${mwmi.name3}</argument>
+								<argument>-Dmwmi.includeBase3=${mwmi.includeBase3}</argument>
+								<argument>-Dmwmi.groupId4=${mwmi.groupId4}</argument>
+								<argument>-Dmwmi.artifactId4=${mwmi.artifactId4}</argument>
+								<argument>-Dmwmi.version4=${mwmi.version4}</argument>
+								<argument>-Dmwmi.name4=${mwmi.name4}</argument>
+								<argument>-Dmwmi.includeBase4=${mwmi.includeBase4}</argument>
+								<argument>-Dmwmi.groupId5=${mwmi.groupId5}</argument>
+								<argument>-Dmwmi.artifactId5=${mwmi.artifactId5}</argument>
+								<argument>-Dmwmi.version5=${mwmi.version5}</argument>
+								<argument>-Dmwmi.name5=${mwmi.name5}</argument>
+								<argument>-Dmwmi.includeBase5=${mwmi.includeBase5}</argument>
+								<argument>-Dmwmi.groupId6=${mwmi.groupId6}</argument>
+								<argument>-Dmwmi.artifactId6=${mwmi.artifactId6}</argument>
+								<argument>-Dmwmi.version6=${mwmi.version6}</argument>
+								<argument>-Dmwmi.name6=${mwmi.name6}</argument>
+								<argument>-Dmwmi.includeBase6=${mwmi.includeBase6}</argument>
+								<argument>-Dmwmi.groupId7=${mwmi.groupId7}</argument>
+								<argument>-Dmwmi.artifactId7=${mwmi.artifactId7}</argument>
+								<argument>-Dmwmi.version7=${mwmi.version7}</argument>
+								<argument>-Dmwmi.name7=${mwmi.name7}</argument>
+								<argument>-Dmwmi.includeBase7=${mwmi.includeBase7}</argument>
+								<argument>-Dmwmi.groupId8=${mwmi.groupId8}</argument>
+								<argument>-Dmwmi.artifactId8=${mwmi.artifactId8}</argument>
+								<argument>-Dmwmi.version8=${mwmi.version8}</argument>
+								<argument>-Dmwmi.name8=${mwmi.name8}</argument>
+								<argument>-Dmwmi.includeBase8=${mwmi.includeBase8}</argument>
+								<argument>-Dmwmi.groupId9=${mwmi.groupId9}</argument>
+								<argument>-Dmwmi.artifactId9=${mwmi.artifactId9}</argument>
+								<argument>-Dmwmi.version9=${mwmi.version9}</argument>
+								<argument>-Dmwmi.name9=${mwmi.name9}</argument>
+								<argument>-Dmwmi.includeBase9=${mwmi.includeBase9}</argument>
 								<argument>${main-class}</argument>
 							</arguments>
 						</configuration>
@@ -210,14 +210,14 @@ Wisconsin-Madison.</license.copyrightOwners>
 			<id>project2</id>
 			<activation>
 				<property>
-					<name>info.project2.groupId</name>
+					<name>mwmi.groupId2</name>
 				</property>
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.project2.groupId}</groupId>
-					<artifactId>${info.project2.artifactId}</artifactId>
-					<version>${info.project2.version}</version>
+					<groupId>${mwmi.groupId2}</groupId>
+					<artifactId>${mwmi.artifactId2}</artifactId>
+					<version>${mwmi.version2}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -225,14 +225,14 @@ Wisconsin-Madison.</license.copyrightOwners>
 			<id>project3</id>
 			<activation>
 				<property>
-					<name>info.project3.groupId</name>
+					<name>mwmi.groupId3</name>
 				</property>
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.project3.groupId}</groupId>
-					<artifactId>${info.project3.artifactId}</artifactId>
-					<version>${info.project3.version}</version>
+					<groupId>${mwmi.groupId3}</groupId>
+					<artifactId>${mwmi.artifactId3}</artifactId>
+					<version>${mwmi.version3}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -240,14 +240,14 @@ Wisconsin-Madison.</license.copyrightOwners>
 			<id>project4</id>
 			<activation>
 				<property>
-					<name>info.project4.groupId</name>
+					<name>mwmi.groupId4</name>
 				</property>
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.project4.groupId}</groupId>
-					<artifactId>${info.project4.artifactId}</artifactId>
-					<version>${info.project4.version}</version>
+					<groupId>${mwmi.groupId4}</groupId>
+					<artifactId>${mwmi.artifactId4}</artifactId>
+					<version>${mwmi.version4}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -255,14 +255,14 @@ Wisconsin-Madison.</license.copyrightOwners>
 			<id>project5</id>
 			<activation>
 				<property>
-					<name>info.project5.groupId</name>
+					<name>mwmi.groupId5</name>
 				</property>
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.project5.groupId}</groupId>
-					<artifactId>${info.project5.artifactId}</artifactId>
-					<version>${info.project5.version}</version>
+					<groupId>${mwmi.groupId5}</groupId>
+					<artifactId>${mwmi.artifactId5}</artifactId>
+					<version>${mwmi.version5}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -270,14 +270,14 @@ Wisconsin-Madison.</license.copyrightOwners>
 			<id>project6</id>
 			<activation>
 				<property>
-					<name>info.project6.groupId</name>
+					<name>mwmi.groupId6</name>
 				</property>
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.project6.groupId}</groupId>
-					<artifactId>${info.project6.artifactId}</artifactId>
-					<version>${info.project6.version}</version>
+					<groupId>${mwmi.groupId6}</groupId>
+					<artifactId>${mwmi.artifactId6}</artifactId>
+					<version>${mwmi.version6}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -285,14 +285,14 @@ Wisconsin-Madison.</license.copyrightOwners>
 			<id>project7</id>
 			<activation>
 				<property>
-					<name>info.project7.groupId</name>
+					<name>mwmi.groupId7</name>
 				</property>
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.project7.groupId}</groupId>
-					<artifactId>${info.project7.artifactId}</artifactId>
-					<version>${info.project7.version}</version>
+					<groupId>${mwmi.groupId7}</groupId>
+					<artifactId>${mwmi.artifactId7}</artifactId>
+					<version>${mwmi.version7}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -300,14 +300,14 @@ Wisconsin-Madison.</license.copyrightOwners>
 			<id>project8</id>
 			<activation>
 				<property>
-					<name>info.project8.groupId</name>
+					<name>mwmi.groupId8</name>
 				</property>
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.project8.groupId}</groupId>
-					<artifactId>${info.project8.artifactId}</artifactId>
-					<version>${info.project8.version}</version>
+					<groupId>${mwmi.groupId8}</groupId>
+					<artifactId>${mwmi.artifactId8}</artifactId>
+					<version>${mwmi.version8}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -315,14 +315,14 @@ Wisconsin-Madison.</license.copyrightOwners>
 			<id>project9</id>
 			<activation>
 				<property>
-					<name>info.project9.groupId</name>
+					<name>mwmi.groupId9</name>
 				</property>
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.project9.groupId}</groupId>
-					<artifactId>${info.project9.artifactId}</artifactId>
-					<version>${info.project9.version}</version>
+					<groupId>${mwmi.groupId9}</groupId>
+					<artifactId>${mwmi.artifactId9}</artifactId>
+					<version>${mwmi.version9}</version>
 				</dependency>
 			</dependencies>
 		</profile>

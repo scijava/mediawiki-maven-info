@@ -37,13 +37,13 @@ import java.util.HashSet;
  * Run it from the CLI on a given component via:
  * </p>
  * <code><pre>
- * mvn -Dinfo.url=http://imagej.net/ \
- *     -Dinfo.groupId=net.imagej \
- *     -Dinfo.artifactId=imagej \
- *     -Dinfo.version=2.0.0-rc-42
+ * mvn -Dmwmi.url=http://imagej.net/ \
+ *     -Dmwmi.groupId=net.imagej \
+ *     -Dmwmi.artifactId=imagej \
+ *     -Dmwmi.version=2.0.0-rc-42
  * </pre></code>
  * <p>
- * The {@code info.url} is optional; without it, the analyzer performs a dry
+ * The {@code mwmi.url} is optional; without it, the analyzer performs a dry
  * run, dumping the resultant tables to stdout.
  * </p>
  * 
@@ -56,7 +56,7 @@ public class Info {
 	// -- Main method --
 
 	public static void main(final String[] args) throws Exception {
-		final String urlPath = arg("info.url", false);
+		final String urlPath = arg("mwmi.url", false);
 		final URL url = urlPath == null ? null : new URL(urlPath);
 
 		final int maxProjects = 9;
@@ -64,16 +64,16 @@ public class Info {
 		final HashSet<ComponentIndex> includeBase = new HashSet<>();
 		for (int p=1; p<=9; p++) {
 			final boolean first = p == 1;
-			final String prefix = first ? "info." : "info.project" + p + ".";
-			final String g = arg(prefix + "groupId", first);
-			final String a = arg(prefix + "artifactId", first);
-			final String v = arg(prefix + "version", first);
+			final String num = first ? "" : "" + p;
+			final String g = arg("mwmi.groupId" + num, first);
+			final String a = arg("mwmi.artifactId" + num, first);
+			final String v = arg("mwmi.version" + num, first);
 			if (g == null) break; // no more projects to process
 			final ComponentIndex index = new ComponentIndex(g, a, v);
-			final String name = arg(prefix + "name", false);
+			final String name = arg("mwmi.name" + num, false);
 			if (name != null) index.setBaseName(name);
 			indices.add(index);
-			if (arg(prefix + "includeBase", false) != null) includeBase.add(index);
+			if (arg("mwmi.includeBase" + num, false) != null) includeBase.add(index);
 		}
 
 		final WikiUpdater wikiUpdater = new WikiUpdater(url);
