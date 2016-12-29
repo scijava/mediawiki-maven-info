@@ -20,3 +20,33 @@ Run it from the CLI on a given component via:
 
 The `mwmi.url` is optional; without it, the analyzer performs a dry run,
 dumping the resultant tables to stdout.
+
+## Analyzing multiple projects ##
+
+Here is an example invocation which layers multiple projects:
+
+    mvn -Dinfo.url=http://imagej.net/ \
+        -Dmwmi.groupId=org.scijava \
+        -Dmwmi.artifactId=scijava-javadoc \
+        -Dmwmi.version=1.0.0-SNAPSHOT \
+        -Dmwmi.name=SciJava \
+        -Dmwmi.groupId2=net.imglib2 \
+        -Dmwmi.artifactId2=imglib2-javadoc \
+        -Dmwmi.version2=1.0.0-SNAPSHOT \
+        -Dmwmi.name2=ImgLib2 \
+        -Dmwmi.groupId3=io.scif \
+        -Dmwmi.artifactId3=scifio-javadoc \
+        -Dmwmi.version3=1.0.0-SNAPSHOT \
+        -Dmwmi.name3=SCIFIO \
+        -Dmwmi.groupId4=net.imagej \
+        -Dmwmi.artifactId4=imagej \
+        -Dmwmi.version4=2.0.0-rc-54 \
+        -Dmwmi.includeBase4 \
+        -Dmwmi.groupId5=sc.fiji \
+        -Dmwmi.artifactId5=fiji \
+        -Dmwmi.version5=2.0.0-SNAPSHOT \
+        -Dmwmi.includeBase5
+
+The above is what the ImageJ and Fiji projects use in order
+to generate their component sidebars and project tables
+which appear on the [ImageJ wiki](https://imagej.net/).
