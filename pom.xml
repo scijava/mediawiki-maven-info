@@ -76,8 +76,8 @@
 		<url>https://github.com/scijava/mediawiki-maven-info/issues</url>
 	</issueManagement>
 	<ciManagement>
-		<system>Jenkins</system>
-		<url>http://jenkins.imagej.net/job/MediaWiki-Maven-Info/</url>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/scijava/mediawiki-maven-info</url>
 	</ciManagement>
 
 	<properties>
