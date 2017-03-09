@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://maven.apache.org/POM/4.0.0
+		https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -17,7 +17,7 @@
 
 	<name>MediaWiki Maven Info</name>
 	<description>Generate MediaWiki pages summarizing Maven components.</description>
-	<url>http://imagej.net/MediaWiki_Maven_Info</url>
+	<url>https://imagej.net/MediaWiki_Maven_Info</url>
 	<inceptionYear>2015</inceptionYear>
 	<organization>
 		<name>SciJava</name>
@@ -26,7 +26,7 @@
 	<licenses>
 		<license>
 			<name>GNU General Public License v3+</name>
-			<url>http://www.gnu.org/licenses/gpl.html</url>
+			<url>https://www.gnu.org/licenses/gpl.html</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -35,7 +35,7 @@
 		<developer>
 			<id>ctrueden</id>
 			<name>Curtis Rueden</name>
-			<url>http://imagej.net/User:Rueden</url>
+			<url>https://imagej.net/User:Rueden</url>
 			<roles>
 				<role>founder</role>
 				<role>lead</role>
@@ -92,7 +92,7 @@ Wisconsin-Madison.</license.copyrightOwners>
 	<repositories>
 		<repository>
 			<id>imagej.public</id>
-			<url>http://maven.imagej.net/content/groups/public</url>
+			<url>https://maven.imagej.net/content/groups/public</url>
 		</repository>
 	</repositories>
 
