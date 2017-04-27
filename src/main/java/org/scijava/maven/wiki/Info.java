@@ -34,13 +34,15 @@ import java.net.URL;
  * <p>
  * Run it from the CLI on a given component via:
  * </p>
- * <code><pre>
+ * <pre>
+ * {@code
  * mvn -Pexec,info \
  *     -Dinfo.groupId=net.imagej \
  *     -Dinfo.artifactId=imagej \
  *     -Dinfo.version=2.0.0-rc-42 \
  *     -Dinfo.url=http://imagej.net/
- * </pre></code>
+ * }
+ * </pre>
  * <p>
  * The {@code info.url} is optional; without it, the analyzer performs a dry
  * run, dumping the resultant tables to stdout.
