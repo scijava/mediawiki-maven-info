@@ -53,7 +53,7 @@ public class ComponentIndexTest {
 		final String masterTable = index.generateMasterTable();
 		final String[] expected =
 			{
-				"{| class=\"wikitable\"", //
+				"{| class=\"component-table\"", //
 				"| '''Name'''", //
 				"| '''Description'''", //
 				"| '''Repository'''", //

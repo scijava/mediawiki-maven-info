@@ -156,7 +156,7 @@ public class ComponentIndex {
 	 */
 	public String generateMasterTable() {
 		final Stringer s = new Stringer();
-		s.println("{| class=\"wikitable\"");
+		s.println("{| class=\"component-table\"");
 		s.println("| '''Name'''");
 		s.println("| '''Description'''");
 		s.println("| '''Repository'''");
