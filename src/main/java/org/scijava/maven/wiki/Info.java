@@ -24,6 +24,8 @@
 package org.scijava.maven.wiki;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * A spiffy software component table analyzer.
@@ -44,7 +46,7 @@ import java.net.URL;
  * }
  * </pre>
  * <p>
- * The {@code info.url} is optional; without it, the analyzer performs a dry
+ * The {@code mwmi.url} is optional; without it, the analyzer performs a dry
  * run, dumping the resultant tables to stdout.
  * </p>
  * 
@@ -57,14 +59,30 @@ public class Info {
 	// -- Main method --
 
 	public static void main(final String[] args) throws Exception {
-		final String g = arg("info.groupId", true);
-		final String a = arg("info.artifactId", true);
-		final String v = arg("info.version", true);
-		final String urlPath = arg("info.url", false);
+		final String urlPath = arg("mwmi.url", false);
 		final URL url = urlPath == null ? null : new URL(urlPath);
 
-		final WikiUpdater wikiUpdater = new WikiUpdater(g, a, v, url);
-		wikiUpdater.update();
+		final int maxProjects = 9;
+		final ArrayList<ComponentIndex> indices = new ArrayList<>(maxProjects);
+		final HashSet<ComponentIndex> includeBase = new HashSet<>();
+		for (int p=1; p<=9; p++) {
+			final boolean first = p == 1;
+			final String num = first ? "" : "" + p;
+			final String g = arg("mwmi.groupId" + num, first);
+			final String a = arg("mwmi.artifactId" + num, first);
+			final String v = arg("mwmi.version" + num, first);
+			if (g == null) break; // no more projects to process
+			final ComponentIndex index = new ComponentIndex(g, a, v);
+			final String name = arg("mwmi.name" + num, false);
+			if (name != null) index.setBaseName(name);
+			indices.add(index);
+			if (arg("mwmi.includeBase" + num, false) != null) includeBase.add(index);
+		}
+
+		final WikiUpdater wikiUpdater = new WikiUpdater(url);
+		for (final ComponentIndex index : indices) {
+			wikiUpdater.update(index, includeBase.contains(index));
+		}
 	}
 
 	// -- Helper methods --

@@ -56,7 +56,7 @@ public class ComponentIndex {
 	private static final HashMap<String, String> KNOWN_LICENSES = knownLicenses();
 
 	private static HashMap<String, String> knownLicenses() {
-		final HashMap<String, String> map = new HashMap<String, String>();
+		final HashMap<String, String> map = new HashMap<>();
 
 		map.put("Apache 2", "Apache");
 		map.put("Apache License 2", "Apache");
@@ -88,17 +88,20 @@ public class ComponentIndex {
 		return map;
 	}
 
-	/** Name of the base project whose components are being indexed. */
-	private final String baseName;
+	/** POM of the base project. */
+	private final POM project;
 
 	/** Collection of dependencies for the base project. */
-	private final HashMap<String, String> depMap = new HashMap<String, String>();
+	private final HashMap<String, String> deps = new HashMap<>();
 
 	/** Cache of retrieved component POMs. */
-	private final HashMap<String, POM> pomCache = new HashMap<String, POM>();
+	private final HashMap<String, POM> pomCache = new HashMap<>();
 
 	/** List of POMs relevant to the base project. */
 	private final List<POM> poms;
+
+	/** Name of the base project whose components are being indexed. */
+	private String baseName;
 
 	public ComponentIndex(final String g, final String a, final String v)
 		throws IOException, ParserConfigurationException, SAXException
@@ -110,20 +113,20 @@ public class ComponentIndex {
 		final Collection<POM> candidates) throws IOException,
 		ParserConfigurationException, SAXException
 	{
-		final POM project = fetchPOM(g, a, v);
+		project = fetchPOM(g, a, v);
 		baseName = project.getProjectName();
 
 		// build list of dependencies for the project
-		final ArrayList<Element> deps = dependencies(project);
-		for (final Element dep : deps) {
+		final ArrayList<Element> depList = dependencies(project);
+		for (final Element dep : depList) {
 			final String dg = XML.cdata(dep, "groupId");
 			final String da = XML.cdata(dep, "artifactId");
 			final String dv = XML.cdata(dep, "version");
-			depMap.put(dg + ":" + da, dv);
+			deps.put(dg + ":" + da, dv);
 		}
 
 		// filter the candidate components
-		poms = new ArrayList<POM>();
+		poms = new ArrayList<>();
 		for (final POM pom : candidates) {
 			if (isRelevant(pom)) poms.add(pom);
 		}
@@ -131,8 +134,16 @@ public class ComponentIndex {
 
 	// -- ComponentIndex methods --
 
+	public POM getProject() {
+		return project;
+	}
+
 	public String getBaseName() {
 		return baseName;
+	}
+
+	public void setBaseName(final String baseName) {
+		this.baseName = baseName;
 	}
 
 	public List<POM> getPOMs() {
@@ -150,8 +161,8 @@ public class ComponentIndex {
 		s.println("| '''Description'''");
 		s.println("| '''Repository'''");
 		s.println("| '''Artifact'''");
-		s.println("| '''License'''");
-		s.println("| '''Team'''");
+		s.println("| '''[[License]]'''");
+		s.println("| '''[[Team]]'''");
 		for (final POM pom : poms) {
 			final String g = pom.getGroupId();
 			final String a = pom.getArtifactId();
@@ -243,7 +254,7 @@ public class ComponentIndex {
 	// -- Internal methods --
 
 	private boolean isRelevant(final POM pom) {
-		return depMap.containsKey(pom.getGroupId() + ":" + pom.getArtifactId());
+		return deps.containsKey(pom.getGroupId() + ":" + pom.getArtifactId());
 	}
 
 	// -- Helper methods - link building --
@@ -318,10 +329,7 @@ public class ComponentIndex {
 			if (date == null) return null;
 			return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").parse(date);
 		}
-		catch (final IOException exc) {
-			return null;
-		}
-		catch (final ParseException exc) {
+		catch (final IOException | ParseException exc) {
 			return null;
 		}
 	}
@@ -518,18 +526,14 @@ public class ComponentIndex {
 	}
 
 	private ArrayList<Element> elements(final POM pom, final String expr) {
-		if (pom == null) return new ArrayList<Element>();
+		if (pom == null) return new ArrayList<>();
 		final ArrayList<Element> elements = pom.elements(expr);
 		try {
 			return elements.isEmpty() ? elements(parent(pom), expr) : elements;
 		}
-		catch (final ParserConfigurationException exc) {
-			throw new RuntimeException(exc);
-		}
-		catch (final SAXException exc) {
-			throw new RuntimeException(exc);
-		}
-		catch (final IOException exc) {
+		catch (final ParserConfigurationException | SAXException
+				| IOException exc)
+		{
 			throw new RuntimeException(exc);
 		}
 	}
@@ -550,23 +554,23 @@ public class ComponentIndex {
 	private POM fetchPOM(final String g, final String a, final String v)
 		throws ParserConfigurationException, SAXException, IOException
 	{
-		if (g == null || a == null || v == null) return null;
+		if (g == null) throw new NullPointerException("Null groupId");
+		if (a == null) throw new NullPointerException("Null artifactId");
+		if (v == null) throw new NullPointerException("Null version");
 		final String gav = g + ":" + a + ":" + v;
 		POM pom = pomCache.get(gav);
 		if (pom == null) {
-			final File file =
-				new File(System.getProperty("user.home") + "/.m2/repository/" +
-					g.replace('.', '/') + "/" + a + "/" + v + "/" + a + "-" + v + ".pom");
+			final File file = new File(System.getProperty("user.home") +
+				"/.m2/repository/" + g.replace('.', '/') + //
+				"/" + a + "/" + v + "/" + a + "-" + v + ".pom");
 			if (file.exists()) {
 				// read from Maven local repository cache
 				pom = new POM(file);
 			}
 			else {
 				// read from remote ImageJ Maven repository
-				final String url =
-					"http://maven.imagej.net/content/groups/public/" +
-						g.replace('.', '/') + "/" + a + "/" + v + "/" + a + "-" + v +
-						".pom";
+				final String url = "http://maven.imagej.net/content/groups/public/" + //
+					g.replace('.', '/') + "/" + a + "/" + v + "/" + a + "-" + v + ".pom";
 				pom = new POM(new URL(url));
 			}
 			pomCache.put(gav, pom);

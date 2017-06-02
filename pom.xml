@@ -49,10 +49,12 @@
 	</developers>
 	<contributors>
 		<!--
-		NB: Need a least one element to override the parent.
+		NB: Need at least one element to override the parent.
 		See: https://issues.apache.org/jira/browse/MNG-5220
 		-->
-		<contributor><name>None</name></contributor>
+		<contributor>
+			<name>None</name>
+		</contributor>
 	</contributors>
 
 	<mailingLists>
@@ -116,15 +118,21 @@ Wisconsin-Madison.</license.copyrightOwners>
 
 	<profiles>
 		<profile>
-			<id>info</id>
+			<id>project1</id>
+			<activation>
+				<property>
+					<name>mwmi.groupId</name>
+				</property>
+			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>${info.groupId}</groupId>
-					<artifactId>${info.artifactId}</artifactId>
-					<version>${info.version}</version>
+					<groupId>${mwmi.groupId}</groupId>
+					<artifactId>${mwmi.artifactId}</artifactId>
+					<version>${mwmi.version}</version>
 				</dependency>
 			</dependencies>
 			<properties>
+				<enforcer.skip>true</enforcer.skip>
 				<skipTests>true</skipTests>
 			</properties>
 			<build>
@@ -137,10 +145,52 @@ Wisconsin-Madison.</license.copyrightOwners>
 							<arguments>
 								<argument>-classpath</argument>
 								<classpath />
-								<argument>-Dinfo.groupId=${info.groupId}</argument>
-								<argument>-Dinfo.artifactId=${info.artifactId}</argument>
-								<argument>-Dinfo.version=${info.version}</argument>
-								<argument>-Dinfo.url=${info.url}</argument>
+								<argument>-Dmwmi.url=${mwmi.url}</argument>
+								<argument>-Dmwmi.groupId=${mwmi.groupId}</argument>
+								<argument>-Dmwmi.artifactId=${mwmi.artifactId}</argument>
+								<argument>-Dmwmi.version=${mwmi.version}</argument>
+								<argument>-Dmwmi.name=${mwmi.name}</argument>
+								<argument>-Dmwmi.includeBase=${mwmi.includeBase}</argument>
+								<argument>-Dmwmi.groupId2=${mwmi.groupId2}</argument>
+								<argument>-Dmwmi.artifactId2=${mwmi.artifactId2}</argument>
+								<argument>-Dmwmi.version2=${mwmi.version2}</argument>
+								<argument>-Dmwmi.name2=${mwmi.name2}</argument>
+								<argument>-Dmwmi.includeBase2=${mwmi.includeBase2}</argument>
+								<argument>-Dmwmi.groupId3=${mwmi.groupId3}</argument>
+								<argument>-Dmwmi.artifactId3=${mwmi.artifactId3}</argument>
+								<argument>-Dmwmi.version3=${mwmi.version3}</argument>
+								<argument>-Dmwmi.name3=${mwmi.name3}</argument>
+								<argument>-Dmwmi.includeBase3=${mwmi.includeBase3}</argument>
+								<argument>-Dmwmi.groupId4=${mwmi.groupId4}</argument>
+								<argument>-Dmwmi.artifactId4=${mwmi.artifactId4}</argument>
+								<argument>-Dmwmi.version4=${mwmi.version4}</argument>
+								<argument>-Dmwmi.name4=${mwmi.name4}</argument>
+								<argument>-Dmwmi.includeBase4=${mwmi.includeBase4}</argument>
+								<argument>-Dmwmi.groupId5=${mwmi.groupId5}</argument>
+								<argument>-Dmwmi.artifactId5=${mwmi.artifactId5}</argument>
+								<argument>-Dmwmi.version5=${mwmi.version5}</argument>
+								<argument>-Dmwmi.name5=${mwmi.name5}</argument>
+								<argument>-Dmwmi.includeBase5=${mwmi.includeBase5}</argument>
+								<argument>-Dmwmi.groupId6=${mwmi.groupId6}</argument>
+								<argument>-Dmwmi.artifactId6=${mwmi.artifactId6}</argument>
+								<argument>-Dmwmi.version6=${mwmi.version6}</argument>
+								<argument>-Dmwmi.name6=${mwmi.name6}</argument>
+								<argument>-Dmwmi.includeBase6=${mwmi.includeBase6}</argument>
+								<argument>-Dmwmi.groupId7=${mwmi.groupId7}</argument>
+								<argument>-Dmwmi.artifactId7=${mwmi.artifactId7}</argument>
+								<argument>-Dmwmi.version7=${mwmi.version7}</argument>
+								<argument>-Dmwmi.name7=${mwmi.name7}</argument>
+								<argument>-Dmwmi.includeBase7=${mwmi.includeBase7}</argument>
+								<argument>-Dmwmi.groupId8=${mwmi.groupId8}</argument>
+								<argument>-Dmwmi.artifactId8=${mwmi.artifactId8}</argument>
+								<argument>-Dmwmi.version8=${mwmi.version8}</argument>
+								<argument>-Dmwmi.name8=${mwmi.name8}</argument>
+								<argument>-Dmwmi.includeBase8=${mwmi.includeBase8}</argument>
+								<argument>-Dmwmi.groupId9=${mwmi.groupId9}</argument>
+								<argument>-Dmwmi.artifactId9=${mwmi.artifactId9}</argument>
+								<argument>-Dmwmi.version9=${mwmi.version9}</argument>
+								<argument>-Dmwmi.name9=${mwmi.name9}</argument>
+								<argument>-Dmwmi.includeBase9=${mwmi.includeBase9}</argument>
 								<argument>${main-class}</argument>
 							</arguments>
 						</configuration>
@@ -155,6 +205,126 @@ Wisconsin-Madison.</license.copyrightOwners>
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		<profile>
+			<id>project2</id>
+			<activation>
+				<property>
+					<name>mwmi.groupId2</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${mwmi.groupId2}</groupId>
+					<artifactId>${mwmi.artifactId2}</artifactId>
+					<version>${mwmi.version2}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>project3</id>
+			<activation>
+				<property>
+					<name>mwmi.groupId3</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${mwmi.groupId3}</groupId>
+					<artifactId>${mwmi.artifactId3}</artifactId>
+					<version>${mwmi.version3}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>project4</id>
+			<activation>
+				<property>
+					<name>mwmi.groupId4</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${mwmi.groupId4}</groupId>
+					<artifactId>${mwmi.artifactId4}</artifactId>
+					<version>${mwmi.version4}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>project5</id>
+			<activation>
+				<property>
+					<name>mwmi.groupId5</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${mwmi.groupId5}</groupId>
+					<artifactId>${mwmi.artifactId5}</artifactId>
+					<version>${mwmi.version5}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>project6</id>
+			<activation>
+				<property>
+					<name>mwmi.groupId6</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${mwmi.groupId6}</groupId>
+					<artifactId>${mwmi.artifactId6}</artifactId>
+					<version>${mwmi.version6}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>project7</id>
+			<activation>
+				<property>
+					<name>mwmi.groupId7</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${mwmi.groupId7}</groupId>
+					<artifactId>${mwmi.artifactId7}</artifactId>
+					<version>${mwmi.version7}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>project8</id>
+			<activation>
+				<property>
+					<name>mwmi.groupId8</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${mwmi.groupId8}</groupId>
+					<artifactId>${mwmi.artifactId8}</artifactId>
+					<version>${mwmi.version8}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>project9</id>
+			<activation>
+				<property>
+					<name>mwmi.groupId9</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${mwmi.groupId9}</groupId>
+					<artifactId>${mwmi.artifactId9}</artifactId>
+					<version>${mwmi.version9}</version>
+				</dependency>
+			</dependencies>
 		</profile>
 	</profiles>
 </project>
