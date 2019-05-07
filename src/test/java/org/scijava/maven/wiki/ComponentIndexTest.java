@@ -39,80 +39,123 @@ public class ComponentIndexTest {
 
 	@Before
 	public void setUp() throws Exception {
-		index = new ComponentIndex("org.scijava", "scijava-common", "2.48.0");
+		index = new ComponentIndex("ch.qos.logback", "logback-classic", "1.2.3");
+	}
+
+	@Test
+	public void testVersions() {
+		// NB: If this test fails, double check that the version of
+		// ch.qos.logback:logback-classic in test scope matches the one in setUp()
+		// above, and that the surefire-maven-plugin does not itself have any
+		// dependencies on ch.qos.logback:logback-classic or its dependencies.
+
+		final POM pom0 = index.getPOMs().get(0);
+		assertEquals("javax.servlet", pom0.getGroupId());
+		assertEquals("javax.servlet-api", pom0.getArtifactId());
+		assertEquals("3.1.0", pom0.getVersion());
+
+		final POM pom1 = index.getPOMs().get(1);
+		assertEquals("ch.qos.logback", pom1.getGroupId());
+		assertEquals("logback-core", pom1.getArtifactId());
+		assertEquals("1.2.3", pom1.getVersion());
+
+		final POM pom2 = index.getPOMs().get(2);
+		assertEquals("org.slf4j", pom2.getGroupId());
+		assertEquals("slf4j-api", pom2.getArtifactId());
+		assertEquals("1.7.25", pom2.getVersion());
 	}
 
 	@Test
 	public void testGetBaseName() {
 		final String baseName = index.getBaseName();
-		assertEquals("SciJava Common", baseName);
+		assertEquals("Logback Classic Module", baseName);
 	}
 
 	@Test
 	public void testGenerateMasterTable() {
 		final String masterTable = index.generateMasterTable();
-		final String[] expected =
-			{
-				"{| class=\"component-table\"", //
-				"| '''Name'''", //
-				"| '''Description'''", //
-				"| '''Repository'''", //
-				"| '''Artifact'''", //
-				"| '''[[License]]'''", //
-				"| '''[[Team]]'''", //
-				"|-", //
-				"| [http://code.google.com/p/gentyref/ GenTyRef]", //
-				"| Generics type reflection library for Java", //
-				"| ", //
-				"| {{Maven | g=com.googlecode.gentyref | a=gentyref | label=gentyref}}", //
-				"| ", //
-				"| Wouter Coekaerts", //
-				"|-", //
-				"| [http://www.eventbus.org EventBus]", //
-				"| A simple but powerful publish-subscribe API that is based on class semantics and/or string (topic) matching.", //
-				"| [https://eventbus.dev.java.net/source/browse/eventbus/ https://eventbus.dev.java.net/source/browse/eventbus/]", //
-				"| {{Maven | g=org.bushe | a=eventbus | label=eventbus}}", //
-				"| [[Apache]]", //
-				"| {{Person|MichaelBushe}}", //
-				"|}" };
+		final String[] expected = { //
+			"{| class=\"component-table\"", //
+			"| '''Name'''", //
+			"| '''Description'''", //
+			"| '''Repository'''", //
+			"| '''Artifact'''", //
+			"| '''[[License]]'''", //
+			"| '''[[Team]]'''", //
+			"|-", //
+			"| [http://servlet-spec.java.net Java Servlet API]", //
+			"| ", //
+			"| [http://java.net/projects/glassfish/sources/svn/show/tags/javax.servlet-api-3.1.0 http://java.net/projects/glassfish/sources/svn/show/tags/javax.servlet-api-3.1.0]", //
+			"| {{Maven | g=javax.servlet | a=javax.servlet-api | label=javax.servlet-api}}", //
+			"| [https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html CDDL + GPLv2 with classpath exception]", //
+			"| {{Person|mode}}, {{Person|swchan2}}", //
+			"|-", //
+			"| Logback Core Module", //
+			"| logback-core module", //
+			"| ", //
+			"| {{Maven | g=ch.qos.logback | a=logback-core | label=logback-core}}", //
+			"| [http://www.eclipse.org/legal/epl-v10.html Eclipse Public License - v 1.0], [http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html GNU Lesser General Public License]", //
+			"| {{Person|ceki}}, {{Person|hixi}}", //
+			"|-", //
+			"| [http://www.slf4j.org SLF4J API Module]", //
+			"| The slf4j API", //
+			"| ", //
+			"| {{Maven | g=org.slf4j | a=slf4j-api | label=slf4j-api}}", //
+			"| [http://www.opensource.org/licenses/mit-license.php MIT License]", //
+			"| {{Person|ceki}}", //
+			"|}", //
+		};
 		assertArrayEquals(expected, masterTable.split("\\n"));
 	}
 
 	@Test
 	public void testGenerateComponentTable() {
 		final List<POM> poms = index.getPOMs();
-		assertEquals(2, poms.size());
+		assertEquals(3, poms.size());
 
-		final String[] gentyref =
-			{
-				"{{Component", //
-				"| project = SciJava Common", //
-				"| name = GenTyRef", //
-				"| url = http://code.google.com/p/gentyref/", //
-				"| release = {{Maven | g=com.googlecode.gentyref | a=gentyref | v=1.1.0 | label=1.1.0}}", //
-				"| devStatus = {{DevStatus | developer=no | incubating=no | obsolete=no}}", //
-				"| supportStatus = {{SupportStatus | debugger=no | reviewer=no | support=no}}", //
-				"}}", //
-			};
+		final String[] javaxServletApi = { //
+			"{{Component", //
+			"| project = Logback Classic Module", //
+			"| name = Java Servlet API", //
+			"| url = http://servlet-spec.java.net", //
+			"| source = [http://java.net/projects/glassfish/sources/svn/show/tags/javax.servlet-api-3.1.0 http://java.net/projects/glassfish/sources/svn/show/tags/javax.servlet-api-3.1.0]", //
+			"| license = [https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html CDDL + GPLv2 with classpath exception]", //
+			"| release = {{Maven | g=javax.servlet | a=javax.servlet-api | v=3.1.0 | label=3.1.0}}", //
+			"| devStatus = {{DevStatus | developer=yes | incubating=no | obsolete=no}}", //
+			"| supportStatus = {{SupportStatus | debugger=no | reviewer=no | support=no}}", //
+			"| leads = {{Person|mode}}, {{Person|swchan2}}", //
+			"| developers = {{Person|swchan2}}", //
+			"}}", //
+		};
 		final String table0 = index.generateComponentTable(poms.get(0));
-		assertArrayEquals(gentyref, table0.split("\\n"));
+		assertArrayEquals(javaxServletApi, table0.split("\\n"));
 
-		final String[] eventbus =
-			{
-				"{{Component", //
-				"| project = SciJava Common", //
-				"| name = EventBus", //
-				"| url = http://www.eventbus.org", //
-				"| source = [https://eventbus.dev.java.net/source/browse/eventbus/ https://eventbus.dev.java.net/source/browse/eventbus/]", //
-				"| license = [[Apache]]", //
-				"| release = {{Maven | g=org.bushe | a=eventbus | v=1.4 | label=1.4}}", //
-				"| devStatus = {{DevStatus | developer=yes | incubating=no | obsolete=no}}", //
-				"| supportStatus = {{SupportStatus | debugger=no | reviewer=no | support=no}}", //
-				"| developers = {{Person|MichaelBushe}}", //
-				"}}", //
-			};
+		final String[] logbackCore = { //
+			"{{Component", //
+			"| project = Logback Classic Module", //
+			"| name = Logback Core Module", //
+			"| license = [http://www.eclipse.org/legal/epl-v10.html Eclipse Public License - v 1.0], [http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html GNU Lesser General Public License]", //
+			"| release = {{Maven | g=ch.qos.logback | a=logback-core | v=1.2.3 | label=1.2.3}}", //
+			"| devStatus = {{DevStatus | developer=no | incubating=no | obsolete=no}}", //
+			"| supportStatus = {{SupportStatus | debugger=no | reviewer=no | support=no}}", //
+			"}}", //
+		};
 		final String table1 = index.generateComponentTable(poms.get(1));
-		assertArrayEquals(eventbus, table1.split("\\n"));
+		assertArrayEquals(logbackCore, table1.split("\\n"));
+
+		final String[] logbackClassic = { //
+			"{{Component", //
+			"| project = Logback Classic Module", //
+			"| name = SLF4J API Module", //
+			"| url = http://www.slf4j.org", //
+			"| license = [http://www.opensource.org/licenses/mit-license.php MIT License]", //
+			"| release = {{Maven | g=org.slf4j | a=slf4j-api | v=1.7.25 | label=1.7.25}}", //
+			"| devStatus = {{DevStatus | developer=no | incubating=no | obsolete=no}}", //
+			"| supportStatus = {{SupportStatus | debugger=no | reviewer=no | support=no}}", //
+			"}}", //
+		};
+		final String table2 = index.generateComponentTable(poms.get(2));
+		assertArrayEquals(logbackClassic, table2.split("\\n"));
 	}
 
 }
