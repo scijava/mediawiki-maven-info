@@ -92,6 +92,8 @@ Wisconsin-Madison.</license.copyrightOwners>
 
 		<!-- NB: Deploy releases to the SciJava Maven repository. -->
 		<releaseProfiles>deploy-to-scijava</releaseProfiles>
+
+		<wiki-java.version>0.31</wiki-java.version>
 	</properties>
 
 	<repositories>
@@ -109,7 +111,7 @@ Wisconsin-Madison.</license.copyrightOwners>
 		<dependency>
 			<groupId>org.wikipedia</groupId>
 			<artifactId>wiki-java</artifactId>
-			<version>0.31</version>
+			<version>${wiki-java.version}</version>
 		</dependency>
 
 		<dependency>
