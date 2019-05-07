@@ -568,8 +568,8 @@ public class ComponentIndex {
 				pom = new POM(file);
 			}
 			else {
-				// read from remote ImageJ Maven repository
-				final String url = "http://maven.imagej.net/content/groups/public/" + //
+				// read from remote SciJava Maven repository
+				final String url = "https://maven.scijava.org/content/groups/public/" +
 					g.replace('.', '/') + "/" + a + "/" + v + "/" + a + "-" + v + ".pom";
 				pom = new POM(new URL(url));
 			}
