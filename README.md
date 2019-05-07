@@ -5,15 +5,15 @@ A spiffy software component metadata analyzer and table generator.
 It generates MediaWiki-formatted metadata tables, and uploads them to a
 MediaWiki instance.
 
-The [ImageJ](http://imagej.net/) and [Fiji](http://fiji.sc/) projects use this
-tool to keep their respective lists of dependencies up-to-date and documented
-online in a human-friendly form.
+The [ImageJ](https://imagej.net/) and [Fiji](https://fiji.sc/) projects use
+this tool to keep their respective lists of dependencies up-to-date and
+documented online in a human-friendly form.
 
 ## Example of usage ##
 
 Run it from the CLI on a given component via:
 
-    mvn -Dmwmi.url=http://imagej.net/ \
+    mvn -Dmwmi.url=https://imagej.net/ \
         -Dmwmi.groupId=net.imagej \
         -Dmwmi.artifactId=imagej \
         -Dmwmi.version=2.0.0-rc-42
@@ -25,7 +25,7 @@ dumping the resultant tables to stdout.
 
 Here is an example invocation which layers multiple projects:
 
-    mvn -Dinfo.url=http://imagej.net/ \
+    mvn -Dinfo.url=https://imagej.net/ \
         -Dmwmi.groupId=org.scijava \
         -Dmwmi.artifactId=scijava-javadoc \
         -Dmwmi.version=1.0.0-SNAPSHOT \
