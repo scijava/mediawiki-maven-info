@@ -26,26 +26,14 @@ dumping the resultant tables to stdout.
 Here is an example invocation which layers multiple projects:
 
     mvn -Dinfo.url=https://imagej.net/ \
-        -Dmwmi.groupId=org.scijava \
-        -Dmwmi.artifactId=scijava-javadoc \
-        -Dmwmi.version=1.0.0-SNAPSHOT \
-        -Dmwmi.name=SciJava \
-        -Dmwmi.groupId2=net.imglib2 \
-        -Dmwmi.artifactId2=imglib2-javadoc \
-        -Dmwmi.version2=1.0.0-SNAPSHOT \
-        -Dmwmi.name2=ImgLib2 \
-        -Dmwmi.groupId3=io.scif \
-        -Dmwmi.artifactId3=scifio-javadoc \
-        -Dmwmi.version3=1.0.0-SNAPSHOT \
-        -Dmwmi.name3=SCIFIO \
-        -Dmwmi.groupId4=net.imagej \
-        -Dmwmi.artifactId4=imagej \
-        -Dmwmi.version4=2.0.0-rc-54 \
-        -Dmwmi.includeBase4 \
-        -Dmwmi.groupId5=sc.fiji \
-        -Dmwmi.artifactId5=fiji \
-        -Dmwmi.version5=2.0.0-SNAPSHOT \
-        -Dmwmi.includeBase5
+        -Dmwmi.groupId=net.imagej \
+        -Dmwmi.artifactId=imagej \
+        -Dmwmi.version=RELEASE \
+        -Dmwmi.includeBase \
+        -Dmwmi.groupId2=sc.fiji \
+        -Dmwmi.artifactId2=fiji \
+        -Dmwmi.version2=RELEASE \
+        -Dmwmi.includeBase2
 
 The above is what the ImageJ and Fiji projects use in order
 to generate their component sidebars and project tables
