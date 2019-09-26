@@ -97,6 +97,20 @@ public class WikiUpdater {
 		}
 	}
 
+	/** Updates the wiki with the information from the associated Maven project. */
+	public void updateWithoutDependencies(final ComponentIndex index)
+			throws LoginException, IOException
+	{
+		final POM project = index.getProject();
+
+		final String masterTable = index.generateMasterTable();
+		upload("ComponentTable", project, masterTable);
+
+		final String componentTable = index.generateComponentTable(project);
+		upload("ComponentStats", project, componentTable);
+
+	}
+
 	// -- Helper methods --
 
 	private void upload(final String base, final POM pom, final String text)

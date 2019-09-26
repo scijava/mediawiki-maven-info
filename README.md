@@ -50,3 +50,6 @@ Here is an example invocation which layers multiple projects:
 The above is what the ImageJ and Fiji projects use in order
 to generate their component sidebars and project tables
 which appear on the [ImageJ wiki](https://imagej.net/).
+
+## Analyzing a project without its dependencies
+By default, the dependencies of a project will be analyzed as well. One can skip this step by adding the argument `-Dmwmi.skipDependencies`. 
