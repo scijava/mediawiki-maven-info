@@ -1,3 +1,5 @@
+[![](https://github.com/scijava/mediawiki-maven-info/actions/workflows/build-main.yml/badge.svg)](https://github.com/scijava/mediawiki-maven-info/actions/workflows/build-main.yml)
+
 # MediaWiki Maven Info #
 
 A spiffy software component metadata analyzer and table generator.
