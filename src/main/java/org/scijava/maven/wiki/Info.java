@@ -65,6 +65,8 @@ public class Info {
 		final int maxProjects = 9;
 		final ArrayList<ComponentIndex> indices = new ArrayList<>(maxProjects);
 		final HashSet<ComponentIndex> includeBase = new HashSet<>();
+		final HashSet<ComponentIndex> skipDependencies = new HashSet<>();
+
 		for (int p=1; p<=9; p++) {
 			final boolean first = p == 1;
 			final String num = first ? "" : "" + p;
@@ -77,11 +79,16 @@ public class Info {
 			if (name != null) index.setBaseName(name);
 			indices.add(index);
 			if (arg("mwmi.includeBase" + num, false) != null) includeBase.add(index);
+			if (arg("mwmi.skipDependencies" + num, false) != null) skipDependencies.add(index);
 		}
 
 		final WikiUpdater wikiUpdater = new WikiUpdater(url);
 		for (final ComponentIndex index : indices) {
-			wikiUpdater.update(index, includeBase.contains(index));
+			if(skipDependencies.contains(index)) {
+				wikiUpdater.updateWithoutDependencies(index);
+			} else {
+				wikiUpdater.update(index, includeBase.contains(index));
+			}
 		}
 	}
 
