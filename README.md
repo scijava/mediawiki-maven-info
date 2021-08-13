@@ -1,15 +1,16 @@
-[![](https://github.com/scijava/mediawiki-maven-info/actions/workflows/build-main.yml/badge.svg)](https://github.com/scijava/mediawiki-maven-info/actions/workflows/build-main.yml)
-
 # MediaWiki Maven Info #
 
-A spiffy software component metadata analyzer and table generator.
+___This project is obsolete.___ It was used to generate MediaWiki content
+describing the development and support status of components according to
+metadata specified in each component's Maven POM file.
 
-It generates MediaWiki-formatted metadata tables, and uploads them to a
-MediaWiki instance.
+This code generates MediaWiki-formatted metadata tables, and can upload them
+to a MediaWiki instance.
 
-The [ImageJ](https://imagej.net/) and [Fiji](https://fiji.sc/) projects use
+The [ImageJ](https://imagej.net/) and [Fiji](https://fiji.sc/) projects used
 this tool to keep their respective lists of dependencies up-to-date and
-documented online in a human-friendly form.
+documented online in a human-friendly form, before the
+[ImageJ wiki](https://imagej.net/) moved to GitHub Pages.
 
 ## Example of usage ##
 
@@ -37,6 +38,6 @@ Here is an example invocation which layers multiple projects:
         -Dmwmi.version2=RELEASE \
         -Dmwmi.includeBase2
 
-The above is what the ImageJ and Fiji projects use in order
-to generate their component sidebars and project tables
-which appear on the [ImageJ wiki](https://imagej.net/).
+The above is what the ImageJ and Fiji projects once used in order to generate
+their component sidebars and project tables which appeared on the [MediaWiki
+incarnation of the ImageJ wiki](https://imagej.net/imagej-wiki-static).
